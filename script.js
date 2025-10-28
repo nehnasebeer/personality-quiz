@@ -1,5 +1,5 @@
 console.log("script.js connected!");
-});
+);
 // Add selected state to clicked button
 btn.classList.add('selected', 'btn-primary');
 btn.classList.remove('btn-outline-primary');
