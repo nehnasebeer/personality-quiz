@@ -1,0 +1,17 @@
+
+.answer-btn.selected {
+color: #fff !important;
+background-color: var(--bs-primary) !important;
+border-color: var(--bs-primary) !important;
+}
+
+
+/* Improve focus visibility for accessibility */
+.answer-btn:focus-visible {
+outline: 3px solid #000; /* high contrast */
+outline-offset: 2px;
+}
+
+
+/* Layout polish */
+.question-block h2 { margin-bottom: 0.25rem; }
