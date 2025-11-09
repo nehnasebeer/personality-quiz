@@ -1,71 +1,107 @@
-<h1 class="text-center my-4">What Kind of Servant Leader Are You?</h1>
-<p class="text-center mb-5">
-  Answer a few questions to discover your servant leadership style.
-</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servant Leader Quiz</title>
+  <meta name="description" content="Discover what kind of servant leader you are based on your strengths and heart for others." />
 
-<!-- Q1 -->
-<div class="question-block mb-4">
-  <h2 class="h5 mb-3">1. When you notice someone having a hard day, you usually…</h2>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="encourager">
-    Send an encouraging message or pray with them
-  </button>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="organizer">
-    Ask what they need and help solve the problem
-  </button>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="prayer">
-    Quietly intercede for them in prayer
-  </button>
-</div>
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-VkZFz1A1Q9xZyZCYbKME4vB7nEpBL3XbHcqQzXGh85YZF+6gbWqz8w1bZB7q0n0z"
+    crossorigin="anonymous"
+  />
 
-<!-- Q2 -->
-<div class="question-block mb-4">
-  <h2 class="h5 mb-3">2. In a campus ministry event, what role do you naturally take?</h2>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="organizer">
-    Planning details, schedules, and logistics
-  </button>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="encourager">
-    Welcoming people and making them feel seen
-  </button>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="prayer">
-    Covering the event in prayer before and after
-  </button>
-</div>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-light">
+  <div class="container py-5">
+    <h1 class="text-center mb-4">What Kind of Servant Leader Are You?</h1>
+    <p class="text-center mb-5">
+      Answer a few questions to discover your servant leadership style.
+    </p>
 
-<!-- Q3 -->
-<div class="question-block mb-4">
-  <h2 class="h5 mb-3">3. Which verse resonates with you the most?</h2>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="encourager">
-    “Encourage one another and build each other up.” (1 Thess 5:11)
-  </button>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="organizer">
-    “Let all things be done decently and in order.” (1 Cor 14:40)
-  </button>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="prayer">
-    “Pray without ceasing.” (1 Thess 5:17)
-  </button>
-</div>
+    <!-- Q1 -->
+    <div class="question-block mb-4">
+      <h2 class="h5 mb-3">1. When you notice someone having a hard day, you usually…</h2>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="encourager">
+        Send an encouraging message or pray with them
+      </button>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="organizer">
+        Ask what they need and help solve the problem
+      </button>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="prayer">
+        Quietly intercede for them in prayer
+      </button>
+    </div>
 
-<!-- Q4 -->
-<div class="question-block mb-4">
-  <h2 class="h5 mb-3">4. When someone asks how they can grow in faith, you tend to…</h2>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="prayer">
-    Challenge them to build a strong prayer life
-  </button>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="encourager">
-    Speak life over them and affirm their calling
-  </button>
-  <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="organizer">
-    Help them make a practical plan and next steps
-  </button>
-</div>
+    <!-- Q2 -->
+    <div class="question-block mb-4">
+      <h2 class="h5 mb-3">2. In a campus ministry event, what role do you naturally take?</h2>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="organizer">
+        Planning details, schedules, and logistics
+      </button>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="encourager">
+        Welcoming people and making them feel seen
+      </button>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="prayer">
+        Covering the event in prayer before and after
+      </button>
+    </div>
 
-<div class="text-center my-4">
-  <button id="get-result-btn" class="btn btn-success btn-lg">
-    Give Me the Results
-  </button>
-</div>
+    <!-- Q3 -->
+    <div class="question-block mb-4">
+      <h2 class="h5 mb-3">3. Which verse resonates with you the most?</h2>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="encourager">
+        “Encourage one another and build each other up.” (1 Thess 5:11)
+      </button>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="organizer">
+        “Let all things be done decently and in order.” (1 Cor 14:40)
+      </button>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="prayer">
+        “Pray without ceasing.” (1 Thess 5:17)
+      </button>
+    </div>
 
-<div id="result-container" class="mt-4 text-center"></div>
+    <!-- Q4 -->
+    <div class="question-block mb-4">
+      <h2 class="h5 mb-3">4. When someone asks how they can grow in faith, you tend to…</h2>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="prayer">
+        Challenge them to build a strong prayer life
+      </button>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="encourager">
+        Speak life over them and affirm their calling
+      </button>
+      <button class="btn btn-outline-primary answer-btn me-2 mb-2" data-type="organizer">
+        Help them make a practical plan and next steps
+      </button>
+    </div>
+
+    <!-- Results Button -->
+    <div class="text-center my-4">
+      <button id="get-result-btn" class="btn btn-success btn-lg">
+        Give Me the Results
+      </button>
+    </div>
+
+    <!-- Results Display -->
+    <div id="result-container" class="mt-4 text-center"></div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kL1jpwKFFuEw3wrjJRXZwPrxF21KUS3qPVE1VfGk8bxxgxr3PV7CdH6dHRAiO8+N"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
 
 
 
