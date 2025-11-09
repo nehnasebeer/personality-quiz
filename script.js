@@ -1,66 +1,96 @@
 console.log("script.js connected!");
 
-// Store selections as { questionIndex: "Category" }
-const selections = {}; 
 
-// Attach handlers to each question block
-const blocks = document.querySelectorAll('.question-block');
-blocks.forEach((block, idx) => {
-  const buttons = block.querySelectorAll('.answer-btn');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove selected state from all buttons in this block
-      buttons.forEach(b => {
-        b.classList.remove('selected', 'btn-primary');
-        b.classList.add('btn-outline-primary');
-      });
-      // Add selected state to clicked button
-      btn.classList.add('selected', 'btn-primary');
-      btn.classList.remove('btn-outline-primary');
+let selections = []; 
 
-      // Save selection
-      selections[idx] = btn.dataset.category; // Explorer | Artist | Leader | Thinker
-      // console.log(selections);
+const questionBlocks = document.querySelectorAll(".question-block");
+
+
+questionBlocks.forEach((block, index) => {
+  const buttons = block.querySelectorAll(".answer-btn");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+    
+      buttons.forEach((b) => b.classList.remove("selected"));
+
+  
+      btn.classList.add("selected");
+
+    
+      const type = btn.getAttribute("data-type");
+      selections[index] = type;
+
+      console.log(`Question ${index + 1} answer:`, type);
     });
   });
 });
 
-// Mapping from categories to final city results
-const RESULTS = {
-  Explorer: {
-    title: "You belong in Mexico City 🇲🇽",
-    body: "Vibrant neighborhoods, street food, and endless discovery. You thrive where every corner is a new story.",
-  },
-  Artist: {
-    title: "You belong in Paris 🇫🇷",
-    body: "Museums, music, and cafés. Your soul comes alive around beauty, art, and thoughtful vibes.",
-  },
-  Leader: {
-    title: "You belong in New York City 🇺🇸",
-    body: "Fast pace, big dreams. You execute, network, and make things happen daily.",
-  },
-  Thinker: {
-    title: "You belong in Copenhagen 🇩🇰",
-    body: "Calm, clean design, bike paths, and deep talks. You value balance and clarity.",
-  },
-};
 
 function displayResult() {
-  // Validate all questions answered
-  const totalQuestions = blocks.length;
-  const answered = Object.keys(selections).length;
-  if (answered < totalQuestions) {
-    const missing = totalQuestions - answered;
-    const msg = missing === 1
-      ? 'Please answer the remaining question.'
-      : `Please answer the remaining ${missing} questions.`;
-    return updateResult({ title: 'Almost there…', body: msg });
+  if (selections.length < questionBlocks.length || selections.includes(undefined)) {
+    document.getElementById("result-container").textContent =
+      "Please answer all the questions first 😊";
+    return;
   }
 
-  // Tally categories
-  const tally = { Explorer: 0, Artist: 0, Leader: 0, Thinker: 0 };
-  Object.values(selections).forEach(cat => {
-    if (tally.hasOwnProperty(cat)) tally[cat]++;
+
+  const scores = {
+    encourager: 0,
+    organizer: 0,
+    prayer: 0,
+  };
+
+  selections.forEach((type) => {
+    if (scores[type] !== undefined) {
+      scores[type] += 1;
+    }
   });
 
-  // Find the max ca
+  console.log("Scores:", scores);
+
+  // Determine highest
+  let finalType = "encourager";
+  let highestScore = scores.encourager;
+
+  if (scores.organizer > highestScore) {
+    finalType = "organizer";
+    highestScore = scores.organizer;
+  }
+  if (scores.prayer > highestScore) {
+    finalType = "prayer";
+    highestScore = scores.prayer;
+  }
+
+  // Build result message
+  let heading = "";
+  let description = "";
+
+  if (finalType === "encourager") {
+    heading = "You are an Encourager 💬";
+    description =
+      "You reflect Christ by speaking life, comfort, and courage into others. God uses your words to lift weary hearts.";
+  } else if (finalType === "organizer") {
+    heading = "You are an Organizer 🗂️";
+    description =
+      "You reflect Christ by bringing structure and order. God uses your planning to make ministry effective and fruitful.";
+  } else if (finalType === "prayer") {
+    heading = "You are a Prayer Warrior 🙏";
+    description =
+      "You reflect Christ by standing in the gap in prayer. God uses your intercession to shift atmospheres and protect others.";
+  }
+
+  const resultContainer = document.getElementById("result-container");
+  resultContainer.innerHTML = `
+    <div class="card shadow-sm mx-auto" style="max-width: 480px;">
+      <div class="card-body">
+        <h2 class="h4 mb-3">${heading}</h2>
+        <p class="mb-0">${description}</p>
+      </div>
+    </div>
+  `;
+}
+
+// Add click listener to result button
+const resultButton = document.getElementById("get-result-btn");
+resultButton.addEventListener("click", displayResult);
